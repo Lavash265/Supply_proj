@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Deliveries</title>
+</head>
+<body>
+<div th:switch="${deliveries}">
+    <h2 th:case="null">No deliveries found!</h2>
+    <div th:case="*">
+        <h2>Deliveries</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Supplier name</th>
+                <th>Fruit type</th>
+                <th>weight</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="delivery : ${deliveries}">
+                <td th:text="${delivery.id}"></td>
+                <td th:text="${delivery.supplier}"></td>
+                <td th:text="${delivery.fruit}"></td>
+                <td th:date="${delivery.deliveryDate}"></td>
+                <td th:text="${delivery.weight}"></td>
+                <td><a th:href="@{/deliveries/update-delivery/{id}(id=${delivery.id})}">Edit</a></td>
+                <td><a th:href="@{/deliveries/delete-delivery/{id}(id=${delivery.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/deliveries/add-delivery">Create delivery</a></p>
+</div>
+</body>
+</html>
