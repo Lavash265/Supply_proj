@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Report List</title>
+</head>
+<body>
+<h1>Report from {{startDate}} to {{endDate}}</h1>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Supplier Name</th>
+    <th>Fruit Name</th>
+    <th>Total Weight</th>
+    <th>Total Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="entry : ${reportEntries}">
+    <td th:text="${entry.supplierName}"></td>
+    <td th:text="${entry.fruitName}"></td>
+    <td th:text="${entry.totalWeight}"></td>
+    <td th:text="${entry.totalPrice}"></td>
+  </tr>
+  </tbody>
+</table>
+<a href="/report/report-list">Generate another report</a>
+<a th:href="@{/}">Main page</a>
+</body>
+</html>
